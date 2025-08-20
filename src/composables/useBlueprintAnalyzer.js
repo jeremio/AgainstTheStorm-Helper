@@ -1,175 +1,4 @@
 export function useBlueprintAnalyzer(gameData) {
-  const analyzeBlueprint = (buildingKey, biomeKey, selectedSpecies, currentBuildings, availableRainwater) => {
-    const building = gameData.value.buildings[buildingKey]
-    const biome = gameData.value.biomes[biomeKey]
-
-    const analysis = {
-      score: 0,
-      reasoning: [],
-      details: {
-        speciesBonus: 0,
-        resourceAvailability: 0,
-        needsFulfillment: 0,
-        productionValue: 0,
-        prerequisiteFulfillment: 0,
-        existingFulfillment: 0,
-        rainwaterBonus: 0,
-        inheritBonus: 0,
-        fertileSoilBonus: 0,
-        fertileUsefulnessScore: 0,
-        isFarmUseless: 0,
-      },
-    }
-
-    if (!building || !biome) {
-      analysis.reasoning.push('❌ Missing building or biome data')
-      return analysis
-    }
-
-    // Base score
-    analysis.score = 0
-
-    // 1) Exclusivity
-    if (building.exclusivity && building.exclusivity !== '') {
-      if (!selectedSpecies.includes(building.exclusivity)) {
-        analysis.score = -1000
-        analysis.details.exclusivityCheck = -1000
-        analysis.reasoning.push(`❌ Cannot build: Exclusive to ${gameData.value.species[building.exclusivity]?.name}`)
-        return analysis
-      }
-    }
-
-    // 1.1) Houses
-    if (building.category == 'housing')
-      analysis.score = 70
-
-    // 1.2) Farms
-    if (building.category == 'farming') {
-      const fertileBonus = analyzeFertileSoilBonus(building, biome, currentBuildings)
-      analysis.details.fertileSoilBonus = fertileBonus
-      analysis.reasoning.push(`<li>+${fertileBonus}: fertile soil is ${biome.fertile_soil} in ${biome.name}`)
-      analysis.score += fertileBonus
-    }
-
-    // 1.3) Do you have a farm while choosing another farm?
-    if (building.category == 'farming') {
-      const farmExistsPoints = isFarmWhileFarmingBuildingExists(building, biome, currentBuildings)
-      analysis.details.fertileSoilBonus = farmExistsPoints
-      analysis.reasoning.push(`<li>+${farmExistsPoints}: fertile soil can already be used by other buildings`)
-      analysis.score += farmExistsPoints
-    }
-
-    // 1.4) Farms usefulness
-    if (building.category == 'farming') {
-      const fertileUsefulnessScore = analyzeFertileSoilUsefulness(building, biome, currentBuildings)
-      if (fertileUsefulnessScore != 0) {
-        analysis.details.fertileUsefulnessScore = fertileUsefulnessScore
-        analysis.reasoning.push(`<li>+${fertileUsefulnessScore} produces useful products for existing buildings`)
-        analysis.score += fertileUsefulnessScore
-      }
-    }
-
-    // 1.5) Greenhouses
-    if (building.category == 'farming') {
-      if (building.name == 'Clay Pit' && !availableRainwater.includes('clearance')) {
-        analysis.score += -50
-        analysis.details.isFarmUseless = -50
-        analysis.reasoning.push(`<li>-50 lacking the required water to produce in this building`)
-      }
-
-      if (building.name == 'Greenhouse' && !availableRainwater.includes('drizzle')) {
-        analysis.score += -50
-        analysis.details.isFarmUseless = -50
-        analysis.reasoning.push(`<li>-50 lacking the required water to produce in this building`)
-      }
-    }
-
-    // 2) Species specialization bonus
-    selectedSpecies.forEach((speciesKey) => {
-      const species = gameData.value.species[speciesKey]
-      if (species?.specialization_bonus && Array.isArray(building?.specialization_bonus)) {
-        building.specialization_bonus.forEach((buildingSpec) => {
-          if (species.specialization_bonus.includes(buildingSpec)) {
-            analysis.score += 15
-            analysis.details.speciesBonus += 15
-            analysis.reasoning.push(`<li>+15: ${species.name} specialize in ${buildingSpec}`)
-          }
-        })
-      }
-    })
-
-    // 3) Resource availability
-    const resourceScore = analyzeResourceAvailability(building, biome)
-    analysis.score += resourceScore
-    analysis.details.resourceAvailability = resourceScore
-    if (resourceScore > 0)
-      analysis.reasoning.push(`<li>+${resourceScore}: Resource availability in biome`)
-    else if (resourceScore < 0)
-      analysis.reasoning.push(`<li>${resourceScore}: Resource constraints`)
-
-    // 4) Needs fulfillment
-    const needsScore = analyzeNeedsFulfillment(building, selectedSpecies)
-    analysis.score += needsScore
-    analysis.details.needsFulfillment = needsScore
-    if (needsScore > 0)
-      analysis.reasoning.push(`<li>+${needsScore}: Fulfills species needs`)
-
-    // 4.5) Service fulfillment
-    const serviceScore = analyzeServiceFulfillment(building, selectedSpecies)
-    analysis.score += serviceScore
-    analysis.details.serviceFulfillment = serviceScore
-    if (serviceScore > 0)
-      analysis.reasoning.push(`<li>+${serviceScore}: Fulfills species service`)
-
-    // 5) Production value
-    const productionScore = analyzeProductionValue(building)
-    analysis.score += productionScore
-    analysis.details.productionValue = productionScore
-    if (productionScore > 0)
-      analysis.reasoning.push(`<li>+${productionScore}: High production value`)
-
-    // 6) Prerequisite fulfillment
-    const prereqScore = analyzeBuildingNeedsFulfilledByExisting(building, currentBuildings)
-    analysis.score += prereqScore
-    if (prereqScore !== 0) {
-      analysis.reasoning.push(`<li>+${prereqScore}: Inputs can be produced by existing buildings`)
-    }
-    analysis.details.prerequisiteFulfillment = prereqScore
-
-    // 7) Existing Building Recipe fulfillment
-    const existingScore = analyzeExistingNeedsFulfilledByBuilding(building, currentBuildings)
-    analysis.score += existingScore
-    if (existingScore !== 0) {
-      analysis.reasoning.push(`<li>+${existingScore}: Outputs can be used by existing buildings`)
-    }
-    analysis.details.existingFulfillment = existingScore
-
-    // 8) Recipe / production bonus
-    const recipeScore = analyzeRecipeBonus(building, currentBuildings)
-    analysis.score += recipeScore
-    analysis.details.recipeBonus = recipeScore
-    if (recipeScore > 0) {
-      analysis.reasoning.push(`<li>+${recipeScore}: Building contributes useful production`)
-    }
-
-    // 9) Rainwater bonus
-    const rainwaterScore = analyzeRainwaterMatch(building, availableRainwater)
-    analysis.score += rainwaterScore
-    analysis.details.rainwaterBonus = rainwaterScore
-    if (rainwaterScore > 0) {
-      analysis.reasoning.push(`<li>+${rainwaterScore}: Available rainwater`)
-    }
-
-    // 10) Inherit bonus
-    const inheritBonus = getInheritBonus(building.name)
-    if (inheritBonus > 0) {
-      analysis.score += inheritBonus
-      analysis.reasoning.push(`<li>+${inheritBonus}: Inherit bonus`)
-    }
-
-    return analysis
-  }
-
   const getInheritBonus = (buildingName) => {
     const bonuses = {
       'Academy': 20,
@@ -192,12 +21,10 @@ export function useBlueprintAnalyzer(gameData) {
   const analyzeResourceAvailability = (building, biome) => {
     let score = 0
     let recipeKeys = []
-    if (Array.isArray(building?.recipes)) {
+    if (Array.isArray(building?.recipes))
       recipeKeys = building.recipes
-    }
-    else if (building?.recipes && typeof building.recipes === 'object') {
+    else if (building?.recipes && typeof building.recipes === 'object')
       recipeKeys = Object.keys(building.recipes)
-    }
 
     if (recipeKeys.length === 0)
       return score
@@ -210,13 +37,12 @@ export function useBlueprintAnalyzer(gameData) {
     recipeKeys.forEach((recipeKey) => {
       const recipe = gameData.value.recipes?.[recipeKey]
 
-      if (building.category == 'resource_acquisition') {
-        if (nodes.includes(recipeKey)) {
+      if (building.category === 'resource_acquisition') {
+        if (nodes.includes(recipeKey))
           score += 50
-        }
       }
 
-      if (building.category == 'production' && recipe?.ingredients) {
+      if (building.category === 'production' && recipe?.ingredients) {
         recipe.ingredients.forEach((ingredient) => {
           const options = Array.isArray(ingredient.options) ? ingredient.options : []
           if (options.length === 0)
@@ -263,9 +89,8 @@ export function useBlueprintAnalyzer(gameData) {
           return
         recipes.forEach((recipeKey) => {
           const recipe = gameData.value.recipes[recipeKey]
-          if (recipe?.output && fulfillers.includes(recipe.output.item)) {
+          if (recipe?.output && fulfillers.includes(recipe.output.item))
             score += 20
-          }
         })
       })
     })
@@ -279,9 +104,8 @@ export function useBlueprintAnalyzer(gameData) {
     selectedSpecies.forEach((speciesKey) => {
       const species = gameData.value.species[speciesKey]
       species?.needs?.forEach((need) => {
-        if (serviceTypes.includes(need)) {
+        if (serviceTypes.includes(need))
           score += 20
-        }
       })
     })
     return score
@@ -428,23 +252,23 @@ export function useBlueprintAnalyzer(gameData) {
     return availableRainwater.includes(building.rain_engine) ? 10 : 0
   }
 
-  const analyzeFertileSoilBonus = (building, biome, currentBuildings) => {
+  const analyzeFertileSoilBonus = (biome) => {
     const soilLevel = biome.fertile_soil?.[0] || 'common'
     const soilMultiplier = { abundant: 1.5, common: 1.0, rare: 0.5 }[soilLevel] || 1.0
     return 40 * soilMultiplier
   }
 
-  const isFarmWhileFarmingBuildingExists = (building, biome, currentBuildings) => {
+  const isFarmWhileFarmingBuildingExists = (currentBuildings) => {
     let score = 0
     currentBuildings.forEach((bKey) => {
       const cb = gameData.value.buildings[bKey]
-      if (cb.category == 'farming')
+      if (cb.category === 'farming')
         score -= 40
     })
     return score
   }
 
-  const analyzeFertileSoilUsefulness = (building, biome, currentBuildings) => {
+  const analyzeFertileSoilUsefulness = (building, currentBuildings) => {
     let score = 0
     building.recipes.forEach((rKey) => {
       const match = rKey.match(/^(.+?)_(\d)star$/)
@@ -461,18 +285,185 @@ export function useBlueprintAnalyzer(gameData) {
           if (!recipe?.ingredients)
             return
           recipe.ingredients.forEach((ingredient) => {
-            if (ingredient.options?.includes(product)) {
+            if (ingredient.options?.includes(product))
               isUseful = true
-            }
           })
         })
       })
 
-      if (isUseful) {
+      if (isUseful)
         score += 20 * stars
-      }
     })
     return score
+  }
+
+  const analyzeBlueprint = (buildingKey, biomeKey, selectedSpecies, currentBuildings, availableRainwater) => {
+    const building = gameData.value.buildings[buildingKey]
+    const biome = gameData.value.biomes[biomeKey]
+
+    const analysis = {
+      score: 0,
+      reasoning: [],
+      details: {
+        speciesBonus: 0,
+        resourceAvailability: 0,
+        needsFulfillment: 0,
+        productionValue: 0,
+        prerequisiteFulfillment: 0,
+        existingFulfillment: 0,
+        rainwaterBonus: 0,
+        inheritBonus: 0,
+        fertileSoilBonus: 0,
+        fertileUsefulnessScore: 0,
+        isFarmUseless: 0,
+      },
+    }
+
+    if (!building || !biome) {
+      analysis.reasoning.push('❌ Missing building or biome data')
+      return analysis
+    }
+
+    // Base score
+    analysis.score = 0
+
+    // 1) Exclusivity
+    if (building.exclusivity && building.exclusivity !== '') {
+      if (!selectedSpecies.includes(building.exclusivity)) {
+        analysis.score = -1000
+        analysis.details.exclusivityCheck = -1000
+        analysis.reasoning.push(`❌ Cannot build: Exclusive to ${gameData.value.species[building.exclusivity]?.name}`)
+        return analysis
+      }
+    }
+
+    // 1.1) Houses
+    if (building.category === 'housing')
+      analysis.score = 70
+
+    // 1.2) Farms
+    if (building.category === 'farming') {
+      const fertileBonus = analyzeFertileSoilBonus(biome)
+      analysis.details.fertileSoilBonus = fertileBonus
+      analysis.reasoning.push(`<li>+${fertileBonus}: fertile soil is ${biome.fertile_soil} in ${biome.name}`)
+      analysis.score += fertileBonus
+    }
+
+    // 1.3) Do you have a farm while choosing another farm?
+    if (building.category === 'farming') {
+      const farmExistsPoints = isFarmWhileFarmingBuildingExists(currentBuildings)
+      analysis.details.fertileSoilBonus = farmExistsPoints
+      analysis.reasoning.push(`<li>+${farmExistsPoints}: fertile soil can already be used by other buildings`)
+      analysis.score += farmExistsPoints
+    }
+
+    // 1.4) Farms usefulness
+    if (building.category === 'farming') {
+      const fertileUsefulnessScore = analyzeFertileSoilUsefulness(building, currentBuildings)
+      if (fertileUsefulnessScore !== 0) {
+        analysis.details.fertileUsefulnessScore = fertileUsefulnessScore
+        analysis.reasoning.push(`<li>+${fertileUsefulnessScore} produces useful products for existing buildings`)
+        analysis.score += fertileUsefulnessScore
+      }
+    }
+
+    // 1.5) Greenhouses
+    if (building.category === 'farming') {
+      if (building.name === 'Clay Pit' && !availableRainwater.includes('clearance')) {
+        analysis.score += -50
+        analysis.details.isFarmUseless = -50
+        analysis.reasoning.push('<li>-50 lacking the required water to produce in this building')
+      }
+
+      if (building.name === 'Greenhouse' && !availableRainwater.includes('drizzle')) {
+        analysis.score += -50
+        analysis.details.isFarmUseless = -50
+        analysis.reasoning.push('<li>-50 lacking the required water to produce in this building')
+      }
+    }
+
+    // 2) Species specialization bonus
+    selectedSpecies.forEach((speciesKey) => {
+      const species = gameData.value.species[speciesKey]
+      if (species?.specialization_bonus && Array.isArray(building?.specialization_bonus)) {
+        building.specialization_bonus.forEach((buildingSpec) => {
+          if (species.specialization_bonus.includes(buildingSpec)) {
+            analysis.score += 15
+            analysis.details.speciesBonus += 15
+            analysis.reasoning.push(`<li>+15: ${species.name} specialize in ${buildingSpec}`)
+          }
+        })
+      }
+    })
+
+    // 3) Resource availability
+    const resourceScore = analyzeResourceAvailability(building, biome)
+    analysis.score += resourceScore
+    analysis.details.resourceAvailability = resourceScore
+    if (resourceScore > 0)
+      analysis.reasoning.push(`<li>+${resourceScore}: Resource availability in biome`)
+    else if (resourceScore < 0)
+      analysis.reasoning.push(`<li>${resourceScore}: Resource constraints`)
+
+    // 4) Needs fulfillment
+    const needsScore = analyzeNeedsFulfillment(building, selectedSpecies)
+    analysis.score += needsScore
+    analysis.details.needsFulfillment = needsScore
+    if (needsScore > 0)
+      analysis.reasoning.push(`<li>+${needsScore}: Fulfills species needs`)
+
+    // 4.5) Service fulfillment
+    const serviceScore = analyzeServiceFulfillment(building, selectedSpecies)
+    analysis.score += serviceScore
+    analysis.details.serviceFulfillment = serviceScore
+    if (serviceScore > 0)
+      analysis.reasoning.push(`<li>+${serviceScore}: Fulfills species service`)
+
+    // 5) Production value
+    const productionScore = analyzeProductionValue(building)
+    analysis.score += productionScore
+    analysis.details.productionValue = productionScore
+    if (productionScore > 0)
+      analysis.reasoning.push(`<li>+${productionScore}: High production value`)
+
+    // 6) Prerequisite fulfillment
+    const prereqScore = analyzeBuildingNeedsFulfilledByExisting(building, currentBuildings)
+    analysis.score += prereqScore
+    if (prereqScore !== 0)
+      analysis.reasoning.push(`<li>+${prereqScore}: Inputs can be produced by existing buildings`)
+
+    analysis.details.prerequisiteFulfillment = prereqScore
+
+    // 7) Existing Building Recipe fulfillment
+    const existingScore = analyzeExistingNeedsFulfilledByBuilding(building, currentBuildings)
+    analysis.score += existingScore
+    if (existingScore !== 0)
+      analysis.reasoning.push(`<li>+${existingScore}: Outputs can be used by existing buildings`)
+
+    analysis.details.existingFulfillment = existingScore
+
+    // 8) Recipe / production bonus
+    const recipeScore = analyzeRecipeBonus(building, currentBuildings)
+    analysis.score += recipeScore
+    analysis.details.recipeBonus = recipeScore
+    if (recipeScore > 0)
+      analysis.reasoning.push(`<li>+${recipeScore}: Building contributes useful production`)
+
+    // 9) Rainwater bonus
+    const rainwaterScore = analyzeRainwaterMatch(building, availableRainwater)
+    analysis.score += rainwaterScore
+    analysis.details.rainwaterBonus = rainwaterScore
+    if (rainwaterScore > 0)
+      analysis.reasoning.push(`<li>+${rainwaterScore}: Available rainwater`)
+
+    // 10) Inherit bonus
+    const inheritBonus = getInheritBonus(building.name)
+    if (inheritBonus > 0) {
+      analysis.score += inheritBonus
+      analysis.reasoning.push(`<li>+${inheritBonus}: Inherit bonus`)
+    }
+
+    return analysis
   }
 
   const calculateOptimalBlueprint = (config) => {
@@ -484,9 +475,8 @@ export function useBlueprintAnalyzer(gameData) {
         .filter(key => !excluded.includes(key) && !gameData.value.buildings[key].name.match(/Holy|Hallowed|Flawless/))
     }
 
-    if (!config.biome || config.selectedSpecies.length !== 3) {
+    if (!config.biome || config.selectedSpecies.length !== 3)
       return { error: 'Please select a biome and exactly 3 species.' }
-    }
 
     const results = blueprintOptions.map((blueprint) => {
       const analysis = analyzeBlueprint(blueprint, config.biome, config.selectedSpecies, config.currentBuildings, config.availableRainwater)

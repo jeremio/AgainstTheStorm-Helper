@@ -70,10 +70,10 @@
 
     <!-- Blueprint Options -->
     <div class="blueprint-options">
-      <label>
+      <p>
         Blueprint Options:
         <span class="info-icon" title="If you pick no blueprints, all available buildings will be analyzed." />
-      </label>
+      </p>
       <div v-for="i in 4" :key="i" class="blueprint-option">
         <label :for="`blueprint-${i}`">Option {{ i }}:</label>
         <select :id="`blueprint-${i}`" v-model="config.blueprintOptions[i - 1]">
@@ -143,7 +143,7 @@ const filteredBuildings = computed(() => {
   const filterText = buildingFilter.value.toLowerCase()
   return Object.fromEntries(
     Object.entries(props.gameData.buildings || {})
-      .filter(([key, building]) => {
+      .filter(([_key, building]) => {
         // Exclusivity check
         if (building.species_exclusivity && !config.selectedSpecies.includes(building.species_exclusivity)) {
           return false
