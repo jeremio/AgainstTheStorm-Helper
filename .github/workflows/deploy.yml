@@ -21,11 +21,9 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      # 2. Installe pnpm
+      # 2. Installe pnpm (lit automatiquement la version depuis package.json)
       - name: Setup pnpm 📦
         uses: pnpm/action-setup@v4
-        with:
-          version: 10 # ou la version que vous utilisez
 
       # 3. Installe Node.js (utilise la version du fichier .nvmrc)
       - name: Setup Node.js 🟩
