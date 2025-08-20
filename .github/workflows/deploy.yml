@@ -4,7 +4,7 @@ name: Deploy Vue App to GitHub Pages
 # Déclencheur : ce workflow s'exécute à chaque push sur la branche 'main'
 on:
   push:
-    branches: [main] # ou "master" selon le nom de votre branche principale
+    branches: ["improvements"] # ou "master" selon le nom de votre branche principale
 
 # Permissions nécessaires pour que l'action puisse écrire sur la branche gh-pages
 permissions:
