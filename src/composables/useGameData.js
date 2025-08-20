@@ -1,4 +1,4 @@
-import { ref, readonly } from 'vue'
+import { readonly, ref } from 'vue'
 
 export function useGameData() {
   const gameData = ref({
@@ -40,24 +40,25 @@ export function useGameData() {
       }
 
       const results = await Promise.allSettled(
-        Object.entries(files).map(([key, filename]) => 
-          loadJSON(filename).then(data => ({ key, data }))
-        )
+        Object.entries(files).map(([key, filename]) =>
+          loadJSON(filename).then(data => ({ key, data })),
+        ),
       )
 
-      results.forEach(result => {
+      results.forEach((result) => {
         if (result.status === 'fulfilled') {
           const { key, data } = result.value
           gameData.value[key] = data
           dataLoadStatus.value[key] = true
           console.log(`✅ ${files[key]} loaded`)
-        } else {
+        }
+        else {
           console.error(`❌ Loading failed`, result.reason)
           error.value = result.reason.message
         }
       })
-
-    } catch (err) {
+    }
+    catch (err) {
       console.error('Error loading game data:', err)
       error.value = err.message
     }

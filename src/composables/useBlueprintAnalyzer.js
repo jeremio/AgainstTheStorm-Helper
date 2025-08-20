@@ -1,10 +1,9 @@
 export function useBlueprintAnalyzer(gameData) {
-
   const analyzeBlueprint = (buildingKey, biomeKey, selectedSpecies, currentBuildings, availableRainwater) => {
     const building = gameData.value.buildings[buildingKey]
     const biome = gameData.value.biomes[biomeKey]
 
-    let analysis = {
+    const analysis = {
       score: 0,
       reasoning: [],
       details: {
@@ -41,7 +40,8 @@ export function useBlueprintAnalyzer(gameData) {
     }
 
     // 1.1) Houses
-    if (building.category == 'housing') analysis.score = 70
+    if (building.category == 'housing')
+      analysis.score = 70
 
     // 1.2) Farms
     if (building.category == 'farming') {
@@ -102,26 +102,31 @@ export function useBlueprintAnalyzer(gameData) {
     const resourceScore = analyzeResourceAvailability(building, biome)
     analysis.score += resourceScore
     analysis.details.resourceAvailability = resourceScore
-    if (resourceScore > 0) analysis.reasoning.push(`<li>+${resourceScore}: Resource availability in biome`)
-    else if (resourceScore < 0) analysis.reasoning.push(`<li>${resourceScore}: Resource constraints`)
+    if (resourceScore > 0)
+      analysis.reasoning.push(`<li>+${resourceScore}: Resource availability in biome`)
+    else if (resourceScore < 0)
+      analysis.reasoning.push(`<li>${resourceScore}: Resource constraints`)
 
     // 4) Needs fulfillment
     const needsScore = analyzeNeedsFulfillment(building, selectedSpecies)
     analysis.score += needsScore
     analysis.details.needsFulfillment = needsScore
-    if (needsScore > 0) analysis.reasoning.push(`<li>+${needsScore}: Fulfills species needs`)
+    if (needsScore > 0)
+      analysis.reasoning.push(`<li>+${needsScore}: Fulfills species needs`)
 
     // 4.5) Service fulfillment
     const serviceScore = analyzeServiceFulfillment(building, selectedSpecies)
     analysis.score += serviceScore
     analysis.details.serviceFulfillment = serviceScore
-    if (serviceScore > 0) analysis.reasoning.push(`<li>+${serviceScore}: Fulfills species service`)
+    if (serviceScore > 0)
+      analysis.reasoning.push(`<li>+${serviceScore}: Fulfills species service`)
 
     // 5) Production value
     const productionScore = analyzeProductionValue(building)
     analysis.score += productionScore
     analysis.details.productionValue = productionScore
-    if (productionScore > 0) analysis.reasoning.push(`<li>+${productionScore}: High production value`)
+    if (productionScore > 0)
+      analysis.reasoning.push(`<li>+${productionScore}: High production value`)
 
     // 6) Prerequisite fulfillment
     const prereqScore = analyzeBuildingNeedsFulfilledByExisting(building, currentBuildings)
@@ -157,9 +162,9 @@ export function useBlueprintAnalyzer(gameData) {
 
     // 10) Inherit bonus
     const inheritBonus = getInheritBonus(building.name)
-    if(inheritBonus > 0) {
-        analysis.score += inheritBonus
-        analysis.reasoning.push(`<li>+${inheritBonus}: Inherit bonus`)
+    if (inheritBonus > 0) {
+      analysis.score += inheritBonus
+      analysis.reasoning.push(`<li>+${inheritBonus}: Inherit bonus`)
     }
 
     return analysis
@@ -167,12 +172,21 @@ export function useBlueprintAnalyzer(gameData) {
 
   const getInheritBonus = (buildingName) => {
     const bonuses = {
-        'Academy': 20, 'Bath House': 20, 'Clan Hall': 30, 'Feast Hall': 10,
-        'Forum': 10, 'Guild House': 10, 'Holy Guild House': 20, 'Holy Market': 10,
-        'Holy Temple': 20, 'Market': 10, 'Monastery': 20, 'Tavern': 30,
-        'Advanced Rain Collector': 60
-    };
-    return bonuses[buildingName] || 0;
+      'Academy': 20,
+      'Bath House': 20,
+      'Clan Hall': 30,
+      'Feast Hall': 10,
+      'Forum': 10,
+      'Guild House': 10,
+      'Holy Guild House': 20,
+      'Holy Market': 10,
+      'Holy Temple': 20,
+      'Market': 10,
+      'Monastery': 20,
+      'Tavern': 30,
+      'Advanced Rain Collector': 60,
+    }
+    return bonuses[buildingName] || 0
   }
 
   const analyzeResourceAvailability = (building, biome) => {
@@ -180,11 +194,13 @@ export function useBlueprintAnalyzer(gameData) {
     let recipeKeys = []
     if (Array.isArray(building?.recipes)) {
       recipeKeys = building.recipes
-    } else if (building?.recipes && typeof building.recipes === 'object') {
+    }
+    else if (building?.recipes && typeof building.recipes === 'object') {
       recipeKeys = Object.keys(building.recipes)
     }
 
-    if (recipeKeys.length === 0) return score
+    if (recipeKeys.length === 0)
+      return score
 
     const abundant = Array.isArray(biome?.abundant_resources) ? biome.abundant_resources : []
     const common = Array.isArray(biome?.common_resources) ? biome.common_resources : []
@@ -192,7 +208,7 @@ export function useBlueprintAnalyzer(gameData) {
     const nodes = Array.isArray(biome?.nodes) ? biome.nodes : []
 
     recipeKeys.forEach((recipeKey) => {
-      let recipe = gameData.value.recipes?.[recipeKey]
+      const recipe = gameData.value.recipes?.[recipeKey]
 
       if (building.category == 'resource_acquisition') {
         if (nodes.includes(recipeKey)) {
@@ -203,11 +219,15 @@ export function useBlueprintAnalyzer(gameData) {
       if (building.category == 'production' && recipe?.ingredients) {
         recipe.ingredients.forEach((ingredient) => {
           const options = Array.isArray(ingredient.options) ? ingredient.options : []
-          if (options.length === 0) return
+          if (options.length === 0)
+            return
 
-          if (options.some((r) => abundant.includes(r))) score += 10
-          if (options.some((r) => common.includes(r))) score += 5
-          if (options.every((r) => rare.includes(r))) score += 2
+          if (options.some(r => abundant.includes(r)))
+            score += 10
+          if (options.some(r => common.includes(r)))
+            score += 5
+          if (options.every(r => rare.includes(r)))
+            score += 2
         })
       }
     })
@@ -218,17 +238,29 @@ export function useBlueprintAnalyzer(gameData) {
     let score = 0
     const recipes = Array.isArray(building?.recipes) ? building.recipes : []
     const needsFulfillment = {
-      porridge: ['porridge'], biscuits: ['biscuits'], pie: ['pie'], jerky: ['jerky'],
-      pickled_goods: ['pickled_goods'], skewers: ['skewers'], paste: ['paste'],
-      coats: ['coats'], boots: ['boots'], religion: ['incense'], treatment: ['tea'],
-      education: ['scrolls'], luxury: ['wine'], brawling: ['training_gear'], leisure: ['ale'],
+      porridge: ['porridge'],
+      biscuits: ['biscuits'],
+      pie: ['pie'],
+      jerky: ['jerky'],
+      pickled_goods: ['pickled_goods'],
+      skewers: ['skewers'],
+      paste: ['paste'],
+      coats: ['coats'],
+      boots: ['boots'],
+      religion: ['incense'],
+      treatment: ['tea'],
+      education: ['scrolls'],
+      luxury: ['wine'],
+      brawling: ['training_gear'],
+      leisure: ['ale'],
     }
 
     selectedSpecies.forEach((speciesKey) => {
       const species = gameData.value.species[speciesKey]
       species?.needs?.forEach((need) => {
         const fulfillers = needsFulfillment[need]
-        if (!fulfillers) return
+        if (!fulfillers)
+          return
         recipes.forEach((recipeKey) => {
           const recipe = gameData.value.recipes[recipeKey]
           if (recipe?.output && fulfillers.includes(recipe.output.item)) {
@@ -245,12 +277,12 @@ export function useBlueprintAnalyzer(gameData) {
     const serviceTypes = Array.isArray(building?.service_type) ? building.service_type : []
 
     selectedSpecies.forEach((speciesKey) => {
-        const species = gameData.value.species[speciesKey]
-        species?.needs?.forEach((need) => {
-            if (serviceTypes.includes(need)) {
-                score += 20
-            }
-        })
+      const species = gameData.value.species[speciesKey]
+      species?.needs?.forEach((need) => {
+        if (serviceTypes.includes(need)) {
+          score += 20
+        }
+      })
     })
     return score
   }
@@ -259,93 +291,114 @@ export function useBlueprintAnalyzer(gameData) {
     let score = 0
     const recipes = Array.isArray(building?.recipes) ? building.recipes : []
     const valueMap = {
-      planks: 50, bricks: 30, fabric: 30, pack_of_luxury_goods: 15, pack_of_trade_goods: 15,
-      tools: 10, wildfire_essence: 10, amber: 10, pack_of_building_materials: 10,
-      pack_of_provisions: 10, training_gear: 10, parts: 10, pipes: 10,
-      oil: 5, coal: 5,
+      planks: 50,
+      bricks: 30,
+      fabric: 30,
+      pack_of_luxury_goods: 15,
+      pack_of_trade_goods: 15,
+      tools: 10,
+      wildfire_essence: 10,
+      amber: 10,
+      pack_of_building_materials: 10,
+      pack_of_provisions: 10,
+      training_gear: 10,
+      parts: 10,
+      pipes: 10,
+      oil: 5,
+      coal: 5,
     }
 
     recipes.forEach((recipeKey) => {
       const recipe = gameData.value.recipes[recipeKey]
       const item = recipe?.output?.item
-      if (!item) return
+      if (!item)
+        return
 
       score += valueMap[item] || 0
-      if (recipeKey.includes('3star')) score += 10
+      if (recipeKey.includes('3star'))
+        score += 10
     })
     return score
   }
 
   const analyzeBuildingNeedsFulfilledByExisting = (newBuilding, currentBuildings) => {
     let score = 0
-    if (!newBuilding.recipes?.length) return 0;
+    if (!newBuilding.recipes?.length)
+      return 0
 
     newBuilding.recipes.forEach((recipeKey) => {
-      const recipe = gameData.value.recipes?.[recipeKey];
-      if (!recipe?.ingredients) return;
+      const recipe = gameData.value.recipes?.[recipeKey]
+      if (!recipe?.ingredients)
+        return
 
       recipe.ingredients.forEach((ingredient) => {
-        const options = ingredient.options || [];
-        const canBeProduced = options.some((resource) =>
-          currentBuildings.some((buildingKey) =>
+        const options = ingredient.options || []
+        const canBeProduced = options.some(resource =>
+          currentBuildings.some(buildingKey =>
             gameData.value.buildings[buildingKey]?.recipes?.some(
-              (existingRecipeKey) => gameData.value.recipes?.[existingRecipeKey]?.output?.item === resource
-            )
-          )
-        );
-        if (canBeProduced) score += 5;
-      });
-    });
-    return score;
+              existingRecipeKey => gameData.value.recipes?.[existingRecipeKey]?.output?.item === resource,
+            ),
+          ),
+        )
+        if (canBeProduced)
+          score += 5
+      })
+    })
+    return score
   }
 
   const analyzeExistingNeedsFulfilledByBuilding = (newBuilding, currentBuildings) => {
-      let score = 0;
-      if (!newBuilding.recipes?.length) return 0;
+    let score = 0
+    if (!newBuilding.recipes?.length)
+      return 0
 
-      const newOutputs = newBuilding.recipes.map((rKey) => gameData.value.recipes?.[rKey]?.output?.item).filter(Boolean);
+    const newOutputs = newBuilding.recipes.map(rKey => gameData.value.recipes?.[rKey]?.output?.item).filter(Boolean)
 
-      currentBuildings.forEach((buildingKey) => {
-          const existing = gameData.value.buildings[buildingKey];
-          if (!existing?.recipes) return;
+    currentBuildings.forEach((buildingKey) => {
+      const existing = gameData.value.buildings[buildingKey]
+      if (!existing?.recipes)
+        return
 
-          existing.recipes.forEach((recipeKey) => {
-              const recipe = gameData.value.recipes?.[recipeKey];
-              if (!recipe?.ingredients) return;
+      existing.recipes.forEach((recipeKey) => {
+        const recipe = gameData.value.recipes?.[recipeKey]
+        if (!recipe?.ingredients)
+          return
 
-              recipe.ingredients.forEach((ingredient) => {
-                  const options = ingredient.options || [];
-                  if (options.some((opt) => newOutputs.includes(opt))) {
-                      const isCurrentlyBlocked = !currentBuildings.some((otherKey) => {
-                          if (otherKey === buildingKey) return false;
-                          const otherBuilding = gameData.value.buildings[otherKey];
-                          return otherBuilding?.recipes?.some((otherRecipeKey) =>
-                              options.includes(gameData.value.recipes?.[otherRecipeKey]?.output?.item)
-                          );
-                      });
-                      score += isCurrentlyBlocked ? 8 : 5;
-                  }
-              });
-          });
-      });
-      return score;
+        recipe.ingredients.forEach((ingredient) => {
+          const options = ingredient.options || []
+          if (options.some(opt => newOutputs.includes(opt))) {
+            const isCurrentlyBlocked = !currentBuildings.some((otherKey) => {
+              if (otherKey === buildingKey)
+                return false
+              const otherBuilding = gameData.value.buildings[otherKey]
+              return otherBuilding?.recipes?.some(otherRecipeKey =>
+                options.includes(gameData.value.recipes?.[otherRecipeKey]?.output?.item),
+              )
+            })
+            score += isCurrentlyBlocked ? 8 : 5
+          }
+        })
+      })
+    })
+    return score
   }
 
   const analyzeRecipeBonus = (building, currentBuildings) => {
     let score = 0
-    const outputs = (building.recipes || []).map((rKey) => gameData.value.recipes[rKey]?.output?.item).filter(Boolean)
+    const outputs = (building.recipes || []).map(rKey => gameData.value.recipes[rKey]?.output?.item).filter(Boolean)
 
     outputs.forEach((outputItem) => {
       let maxStar = -1
       currentBuildings.forEach((bKey) => {
         const b = gameData.value.buildings[bKey]
-        if (!b?.recipes) return
+        if (!b?.recipes)
+          return
 
         b.recipes.forEach((rKey) => {
           const recipe = gameData.value.recipes[rKey]
           if (recipe?.output?.item === outputItem) {
             const starMatch = rKey.match(/(\d)star$/)
-            const stars = starMatch ? parseInt(starMatch[1], 10) : 1
+            const stars = starMatch ? Number.parseInt(starMatch[1], 10) : 1
             maxStar = Math.max(maxStar, stars)
           }
         })
@@ -355,34 +408,38 @@ export function useBlueprintAnalyzer(gameData) {
         const recipe = gameData.value.recipes[rKey]
         if (recipe?.output?.item === outputItem) {
           const starMatch = rKey.match(/(\d)star$/)
-          return Math.max(star, starMatch ? parseInt(starMatch[1], 10) : 1)
+          return Math.max(star, starMatch ? Number.parseInt(starMatch[1], 10) : 1)
         }
         return star
       }, 0)
 
-      if (maxStar === -1) score += 20
-      else if (buildingStar <= maxStar) score -= 20
+      if (maxStar === -1)
+        score += 20
+      else if (buildingStar <= maxStar)
+        score -= 20
       else score += 10
     })
     return score
   }
 
   const analyzeRainwaterMatch = (building, availableRainwater) => {
-    if (!building?.rain_engine) return 0
+    if (!building?.rain_engine)
+      return 0
     return availableRainwater.includes(building.rain_engine) ? 10 : 0
   }
 
   const analyzeFertileSoilBonus = (building, biome, currentBuildings) => {
-    const soilLevel = biome.fertile_soil?.[0] || 'common';
-    const soilMultiplier = { abundant: 1.5, common: 1.0, rare: 0.5 }[soilLevel] || 1.0;
-    return 40 * soilMultiplier;
+    const soilLevel = biome.fertile_soil?.[0] || 'common'
+    const soilMultiplier = { abundant: 1.5, common: 1.0, rare: 0.5 }[soilLevel] || 1.0
+    return 40 * soilMultiplier
   }
 
   const isFarmWhileFarmingBuildingExists = (building, biome, currentBuildings) => {
     let score = 0
     currentBuildings.forEach((bKey) => {
       const cb = gameData.value.buildings[bKey]
-      if (cb.category == 'farming') score -= 40
+      if (cb.category == 'farming')
+        score -= 40
     })
     return score
   }
@@ -391,16 +448,18 @@ export function useBlueprintAnalyzer(gameData) {
     let score = 0
     building.recipes.forEach((rKey) => {
       const match = rKey.match(/^(.+?)_(\d)star$/)
-      if (!match) return
+      if (!match)
+        return
 
       const product = match[1]
-      const stars = parseInt(match[2], 10)
+      const stars = Number.parseInt(match[2], 10)
       let isUseful = false
       currentBuildings.forEach((bKey) => {
         const cb = gameData.value.buildings[bKey]
         cb.recipes?.forEach((recipeKey) => {
           const recipe = gameData.value.recipes[recipeKey]
-          if (!recipe?.ingredients) return
+          if (!recipe?.ingredients)
+            return
           recipe.ingredients.forEach((ingredient) => {
             if (ingredient.options?.includes(product)) {
               isUseful = true
@@ -417,12 +476,12 @@ export function useBlueprintAnalyzer(gameData) {
   }
 
   const calculateOptimalBlueprint = (config) => {
-    let blueprintOptions = config.blueprintOptions.filter(Boolean);
+    let blueprintOptions = config.blueprintOptions.filter(Boolean)
 
     if (blueprintOptions.length === 0) {
-        const excluded = [...config.currentBuildings];
-        blueprintOptions = Object.keys(gameData.value.buildings)
-            .filter(key => !excluded.includes(key) && !gameData.value.buildings[key].name.match(/Holy|Hallowed|Flawless/));
+      const excluded = [...config.currentBuildings]
+      blueprintOptions = Object.keys(gameData.value.buildings)
+        .filter(key => !excluded.includes(key) && !gameData.value.buildings[key].name.match(/Holy|Hallowed|Flawless/))
     }
 
     if (!config.biome || config.selectedSpecies.length !== 3) {
