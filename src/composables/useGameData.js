@@ -20,8 +20,9 @@ export function useGameData() {
   const error = ref(null)
 
   async function loadJSON(filename) {
-    // All data is in the public folder
-    const response = await fetch(`/js/data/${filename}`)
+    // All data is in the public folder.
+    // Use a relative path so it works on GitHub Pages (which is in a subfolder).
+    const response = await fetch(`js/data/${filename}`)
     if (!response.ok) {
       throw new Error(`Failed to load ${filename}: ${response.statusText}`)
     }
