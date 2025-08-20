@@ -1,25 +1,17 @@
-# Optimiseur de Plans Against the Storm - Documentation Technique
+# Against the Storm Blueprint Optimizer - Documentation Technique
 
-## Aperçu de l'Architecture
+## Vue d'ensemble de l'architecture
 
-L'Optimiseur de Plans Against the Storm est une application web côté client construite avec du JavaScript vanilla, HTML5, et CSS3. L'application suit un modèle d'architecture modulaire avec une séparation claire des préoccupations entre la gestion des données, la manipulation de l'UI, et la logique métier.
+L'optimiseur de plans d'Against the Storm est une application web moderne côté client, construite avec Vue.js 3 et Vite. Elle suit une architecture basée sur les composants en utilisant la Composition API pour l'organisation de la logique et la gestion de l'état, garantissant ainsi des performances élevées, une maintenabilité et une scalabilité accrues.
 
 ### Stack Technologique
 
-**Frontend :**
+- **Framework** : [Vue.js 3](https://vuejs.org/) (utilisant la Composition API)
+- **Outil de build** : [Vite](https://vitejs.dev/) pour un développement rapide et des builds optimisés pour la production.
+- **Langage** : JavaScript (ES6+)
+- **Style** : CSS3
+- **Gestion des données** : Fichiers JSON statiques pour les données du jeu.
 
-- **HTML5** : Balisage sémantique avec fonctionnalités d'accessibilité
-- **CSS3** : Stylisme moderne avec CSS Grid, Flexbox, et propriétés personnalisées
-- **JavaScript Vanilla (ES6+)** : Aucune dépendance de framework pour une performance et simplicité maximales
+### Structure du Projet
 
-**Gestion des Données :**
-
-- **Fichiers JSON** : Stockage de données statiques pour les informations du jeu
-- **État Local** : Gestion d'état en mémoire pour les sélections utilisateur
-
-**Système de Build :**
-
-- **Pas de Processus de Build** : Service de fichiers direct pour la simplicité et la maintenabilité
-- **JavaScript Modulaire** : Organisé en modules logiques
-
-## Structure des Fichiers
+Le projet est organisé selon les standards modernes de développement web au sein du répertoire `src` :

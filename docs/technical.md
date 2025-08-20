@@ -2,24 +2,16 @@
 
 ## Architecture Overview
 
-The Against the Storm Blueprint Optimizer is a client-side web application built with vanilla JavaScript, HTML5, and CSS3. The application follows a modular architecture pattern with clear separation of concerns between data management, UI handling, and business logic.
+The Against the Storm Blueprint Optimizer is a modern client-side web application built with Vue.js 3 and Vite. It follows a component-based architecture using the Composition API for logic organization and state management, ensuring high performance, maintainability, and scalability.
 
 ### Technology Stack
 
-**Frontend:**
+- **Framework**: [Vue.js 3](https://vuejs.org/) (using Composition API)
+- **Build Tool**: [Vite](https://vitejs.dev/) for fast development and optimized production builds.
+- **Language**: JavaScript (ES6+)
+- **Styling**: CSS3
+- **Data Management**: Static JSON files for game data.
 
-- **HTML5**: Semantic markup with accessibility features
-- **CSS3**: Modern styling with CSS Grid, Flexbox, and custom properties
-- **Vanilla JavaScript (ES6+)**: No framework dependencies for maximum performance and simplicity
+### Project Structure
 
-**Data Management:**
-
-- **JSON Files**: Static data storage for game information
-- **Local State**: In-memory state management for user selections
-
-**Build System:**
-
-- **No Build Process**: Direct file serving for simplicity and maintainability
-- **Modular JavaScript**: Organized into logical modules
-
-## File Structure
+The project is organized following modern web development standards within the `src` directory:
