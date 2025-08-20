@@ -1,0 +1,50 @@
+# Nom du workflow qui apparaîtra dans l'onglet "Actions" de votre dépôt GitHub
+name: Deploy Vue App to GitHub Pages
+
+# Déclencheur : ce workflow s'exécute à chaque push sur la branche 'main'
+on:
+  push:
+    branches: [main] # ou "master" selon le nom de votre branche principale
+
+# Permissions nécessaires pour que l'action puisse écrire sur la branche gh-pages
+permissions:
+  contents: write
+
+# Jobs à exécuter
+jobs:
+  build-and-deploy:
+    # Utiliser la dernière version d'Ubuntu pour l'environnement d'exécution
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Récupère le code de votre dépôt
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      # 2. Installe pnpm
+      - name: Setup pnpm 📦
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10 # ou la version que vous utilisez
+
+      # 3. Installe Node.js (utilise la version du fichier .nvmrc)
+      - name: Setup Node.js 🟩
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm # Active le cache pour pnpm
+
+      # 4. Installe les dépendances du projet
+      - name: Install dependencies 👨‍🔧
+        run: pnpm install --frozen-lockfile
+
+      # 5. Build l'application Vue.js
+      - name: Build 🏗️
+        run: pnpm build
+
+      # 6. Déploie les fichiers du build (contenu du dossier 'dist') sur la branche 'gh-pages'
+      - name: Deploy 🚀
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
