@@ -1,4 +1,4 @@
-﻿{
+{
   "alchemists_hut": {
     "name": "Alchemist's Hut",
     "category": "production",
@@ -6,11 +6,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "crystalized_dew_2star", "tea_2star", "wine_2star" ],
-    "specialization_bonus": [ "alchemy", "brewing" ],
+    "recipes": ["crystalized_dew_2star", "tea_2star", "wine_2star"],
+    "specialization_bonus": ["alchemy", "brewing"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "apothecary": {
@@ -20,11 +20,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "tea_2star", "dye_2star", "jerky_2star" ],
-    "specialization_bonus": [ "alchemy", "rainwater" ],
+    "recipes": ["tea_2star", "dye_2star", "jerky_2star"],
+    "specialization_bonus": ["alchemy", "rainwater"],
     "rain_engine": "drizzle",
     "exclusivity": "harpies",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "artisan": {
@@ -34,11 +34,11 @@
       "planks": 8,
       "fabric": 4
     },
-    "recipes": [ "barrels_2star", "coats_2star", "scrolls_2star" ],
-    "specialization_bonus": [ "tailoring" ],
+    "recipes": ["barrels_2star", "coats_2star", "scrolls_2star"],
+    "specialization_bonus": ["tailoring"],
     "rain_engine": "clearance",
     "exclusivity": "harpies",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "bakery": {
@@ -48,11 +48,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "biscuits_2star", "pie_2star", "pottery_2star" ],
-    "specialization_bonus": [ "warmth" ],
+    "recipes": ["biscuits_2star", "pie_2star", "pottery_2star"],
+    "specialization_bonus": ["warmth"],
     "rain_engine": "drizzle",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "beanery": {
@@ -62,11 +62,11 @@
       "planks": 8,
       "bricks": 4
     },
-    "recipes": [ "porridge_3star", "pickled_goods_1star", "crystalized_dew_1star" ],
-    "specialization_bonus": [ "warmth", "rainwater" ],
+    "recipes": ["porridge_3star", "pickled_goods_1star", "crystalized_dew_1star"],
+    "specialization_bonus": ["warmth", "rainwater"],
     "rain_engine": "drizzle",
     "exclusivity": "foxes",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "brewery": {
@@ -77,11 +77,11 @@
       "bricks": 2,
       "fabric": 2
     },
-    "recipes": [ "ale_3star", "porridge_2star", "pack_of_crops_1star" ],
-    "specialization_bonus": [ "brewing" ],
+    "recipes": ["ale_3star", "porridge_2star", "pack_of_crops_1star"],
+    "specialization_bonus": ["brewing"],
     "rain_engine": "drizzle",
     "exclusivity": "humans",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "brick_oven": {
@@ -90,11 +90,11 @@
     "construction_cost": {
       "bricks": 5
     },
-    "recipes": [ "biscuits_3star", "incense_2star", "coal_1star" ],
-    "specialization_bonus": [ "warmth" ],
+    "recipes": ["biscuits_3star", "incense_2star", "coal_1star"],
+    "specialization_bonus": ["warmth"],
     "rain_engine": "clearance",
     "exclusivity": "humans",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "brickyard": {
@@ -103,11 +103,11 @@
     "construction_cost": {
       "planks": 8
     },
-    "recipes": [ "bricks_3star", "pottery_2star", "crystalized_dew_1star" ],
-    "specialization_bonus": [ "masonry" ],
+    "recipes": ["bricks_3star", "pottery_2star", "crystalized_dew_1star"],
+    "specialization_bonus": ["masonry"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "butcher": {
@@ -117,11 +117,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "skewers_2star", "jerky_2star", "oil_2star" ],
-    "specialization_bonus": [ "meat" ],
+    "recipes": ["skewers_2star", "jerky_2star", "oil_2star"],
+    "specialization_bonus": ["meat"],
     "rain_engine": "drizzle",
     "exclusivity": "lizards",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "cannery": {
@@ -131,11 +131,11 @@
       "bricks": 2,
       "fabric": 2
     },
-    "recipes": [ "paste_3star", "wine_2star", "biscuits_1star" ],
-    "specialization_bonus": [ "" ],
+    "recipes": ["paste_3star", "wine_2star", "biscuits_1star"],
+    "specialization_bonus": [""],
     "rain_engine": "drizzle",
     "exclusivity": "frogs",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "carpenter": {
@@ -145,11 +145,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "planks_2star", "tools_2star", "pack_of_luxury_goods_2star" ],
-    "specialization_bonus": [ "woodworking" ],
+    "recipes": ["planks_2star", "tools_2star", "pack_of_luxury_goods_2star"],
+    "specialization_bonus": ["woodworking"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "cellar": {
@@ -159,11 +159,11 @@
       "bricks": 2,
       "fabric": 2
     },
-    "recipes": [ "wine_3star", "pickled_goods_2star", "pack_of_provisions_1star" ],
-    "specialization_bonus": [ "brewing" ],
+    "recipes": ["wine_3star", "pickled_goods_2star", "pack_of_provisions_1star"],
+    "specialization_bonus": ["brewing"],
     "rain_engine": "drizzle",
     "exclusivity": "beavers",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "clothier": {
@@ -173,11 +173,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "coats_3star", "pack_of_building_materials_2star", "waterskins_1star" ],
-    "specialization_bonus": [ "tailoring" ],
+    "recipes": ["coats_3star", "pack_of_building_materials_2star", "waterskins_1star"],
+    "specialization_bonus": ["tailoring"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "cobbler": {
@@ -186,11 +186,11 @@
     "construction_cost": {
       "planks": 8
     },
-    "recipes": [ "boots_3star", "pack_of_building_materials_2star", "dye_1star" ],
-    "specialization_bonus": [ "tailoring" ],
+    "recipes": ["boots_3star", "pack_of_building_materials_2star", "dye_1star"],
+    "specialization_bonus": ["tailoring"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "cookhouse": {
@@ -200,11 +200,11 @@
       "planks": 8,
       "bricks": 4
     },
-    "recipes": [ "skewers_2star", "biscuits_2star", "porridge_2star" ],
-    "specialization_bonus": [ "warmth" ],
+    "recipes": ["skewers_2star", "biscuits_2star", "porridge_2star"],
+    "specialization_bonus": ["warmth"],
     "rain_engine": "drizzle",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 4
   },
   "cooperage": {
@@ -214,11 +214,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "barrels_3star", "coats_2star", "pack_of_luxury_goods_1star" ],
-    "specialization_bonus": [ "woodworking", "metallurgy" ],
+    "recipes": ["barrels_3star", "coats_2star", "pack_of_luxury_goods_1star"],
+    "specialization_bonus": ["woodworking", "metallurgy"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "crude_workstation": {
@@ -227,11 +227,11 @@
     "construction_cost": {
       "wood": 5
     },
-    "recipes": [ "planks_0star", "fabric_0star", "bricks_0star", "pipes_0star" ],
-    "specialization_bonus": [ "" ],
+    "recipes": ["planks_0star", "fabric_0star", "bricks_0star", "pipes_0star"],
+    "specialization_bonus": [""],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "distillery": {
@@ -242,11 +242,11 @@
       "bricks": 2,
       "fabric": 2
     },
-    "recipes": [ "ale_2star", "incense_2star", "pickled_goods_2star" ],
-    "specialization_bonus": [ "brewing", "rainwater" ],
+    "recipes": ["ale_2star", "incense_2star", "pickled_goods_2star"],
+    "specialization_bonus": ["brewing", "rainwater"],
     "rain_engine": "drizzle",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "druids_hut": {
@@ -256,11 +256,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "oil_3star", "tea_2star", "coats_1star" ],
-    "specialization_bonus": [ "alchemy" ],
+    "recipes": ["oil_3star", "tea_2star", "coats_1star"],
+    "specialization_bonus": ["alchemy"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "field_kitchen": {
@@ -270,11 +270,11 @@
       "planks": 2,
       "fabric": 2
     },
-    "recipes": [ "skewers_0star", "paste_0star", "biscuits_0star", "pickled_goods_0star" ],
-    "specialization_bonus": [ "" ],
+    "recipes": ["skewers_0star", "paste_0star", "biscuits_0star", "pickled_goods_0star"],
+    "specialization_bonus": [""],
     "rain_engine": "drizzle",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "finesmith": {
@@ -284,11 +284,11 @@
       "planks": 10,
       "bricks": 10
     },
-    "recipes": [ "amber_3star", "tools_3star" ],
-    "specialization_bonus": [ "metallurgy", "engineering" ],
+    "recipes": ["amber_3star", "tools_3star"],
+    "specialization_bonus": ["metallurgy", "engineering"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "flawless_brewery": {
@@ -299,11 +299,11 @@
       "bricks": 2,
       "fabric": 2
     },
-    "recipes": [ "ale_3star", "porridge_3star", "pack_of_crops_3star" ],
-    "specialization_bonus": [ "brewing" ],
+    "recipes": ["ale_3star", "porridge_3star", "pack_of_crops_3star"],
+    "specialization_bonus": ["brewing"],
     "rain_engine": "drizzle",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "flawless_cellar": {
@@ -313,11 +313,11 @@
       "bricks": 2,
       "fabric": 2
     },
-    "recipes": [ "wine_3star", "pickled_goods_3star", "pack_of_provisions_3star" ],
-    "specialization_bonus": [ "brewing" ],
+    "recipes": ["wine_3star", "pickled_goods_3star", "pack_of_provisions_3star"],
+    "specialization_bonus": ["brewing"],
     "rain_engine": "drizzle",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "flawless_cooperage": {
@@ -327,11 +327,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "barrels_3star", "coats_3star", "pack_of_luxury_goods_3star" ],
-    "specialization_bonus": [ "woodworking", "metallurgy" ],
+    "recipes": ["barrels_3star", "coats_3star", "pack_of_luxury_goods_3star"],
+    "specialization_bonus": ["woodworking", "metallurgy"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "flawless_druids_hut": {
@@ -341,11 +341,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "oil_3star", "tea_3star", "coats_3star" ],
-    "specialization_bonus": [ "alchemy" ],
+    "recipes": ["oil_3star", "tea_3star", "coats_3star"],
+    "specialization_bonus": ["alchemy"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "flawless_leatherworker": {
@@ -355,11 +355,11 @@
       "bricks": 2,
       "fabric": 2
     },
-    "recipes": [ "waterskins_3star", "boots_3star", "training_gear_3star" ],
-    "specialization_bonus": [ "tailoring", "meat" ],
+    "recipes": ["waterskins_3star", "boots_3star", "training_gear_3star"],
+    "specialization_bonus": ["tailoring", "meat"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "flawless_rain_mill": {
@@ -369,11 +369,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "flour_3star", "scrolls_3star", "paste_3star" ],
-    "specialization_bonus": [ "engineering", "farming" ],
+    "recipes": ["flour_3star", "scrolls_3star", "paste_3star"],
+    "specialization_bonus": ["engineering", "farming"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "flawless_smelter": {
@@ -382,11 +382,11 @@
     "construction_cost": {
       "bricks": 4
     },
-    "recipes": [ "copper_bars_3star", "training_gear_3star", "pie_3star" ],
-    "specialization_bonus": [ "metallurgy", "warmth" ],
+    "recipes": ["copper_bars_3star", "training_gear_3star", "pie_3star"],
+    "specialization_bonus": ["metallurgy", "warmth"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "furnace": {
@@ -396,11 +396,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "pie_2star", "skewers_2star", "copper_bars_2star" ],
-    "specialization_bonus": [ "metallurgy", "warmth" ],
+    "recipes": ["pie_2star", "skewers_2star", "copper_bars_2star"],
+    "specialization_bonus": ["metallurgy", "warmth"],
     "rain_engine": "drizzle",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "granary": {
@@ -410,11 +410,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "pickled_goods_2star", "fabric_2star", "pack_of_crops_2star" ],
-    "specialization_bonus": [ "farming" ],
+    "recipes": ["pickled_goods_2star", "fabric_2star", "pack_of_crops_2star"],
+    "specialization_bonus": ["farming"],
     "rain_engine": "drizzle",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "grill": {
@@ -424,11 +424,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "skewers_3star", "paste_2star", "copper_bars_1star" ],
-    "specialization_bonus": [ "meat", "warmth" ],
+    "recipes": ["skewers_3star", "paste_2star", "copper_bars_1star"],
+    "specialization_bonus": ["meat", "warmth"],
     "rain_engine": "drizzle",
     "exclusivity": "bats",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "kiln": {
@@ -437,11 +437,11 @@
     "construction_cost": {
       "bricks": 4
     },
-    "recipes": [ "coal_3star", "bricks_1star", "jerky_1star" ],
-    "specialization_bonus": [ "warmth", "masonry" ],
+    "recipes": ["coal_3star", "bricks_1star", "jerky_1star"],
+    "specialization_bonus": ["warmth", "masonry"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "leatherworker": {
@@ -451,11 +451,11 @@
       "bricks": 2,
       "fabric": 2
     },
-    "recipes": [ "waterskins_3star", "boots_2star", "training_gear_1star" ],
-    "specialization_bonus": [ "tailoring", "meat" ],
+    "recipes": ["waterskins_3star", "boots_2star", "training_gear_1star"],
+    "specialization_bonus": ["tailoring", "meat"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "lumber_mill": {
@@ -465,11 +465,11 @@
       "bricks": 2,
       "fabric": 2
     },
-    "recipes": [ "planks_3star", "scrolls_1star", "pack_of_trade_goods_1star" ],
-    "specialization_bonus": [ "woodworking" ],
+    "recipes": ["planks_3star", "scrolls_1star", "pack_of_trade_goods_1star"],
+    "specialization_bonus": ["woodworking"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "makeshift_post": {
@@ -478,11 +478,11 @@
     "construction_cost": {
       "wood": 5
     },
-    "recipes": [ "pack_of_crops_0star", "pack_of_provisions_0star", "pack_of_building_materials_0star" ],
-    "specialization_bonus": [ "" ],
+    "recipes": ["pack_of_crops_0star", "pack_of_provisions_0star", "pack_of_building_materials_0star"],
+    "specialization_bonus": [""],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "manufactory": {
@@ -492,11 +492,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "fabric_2star", "barrels_2star", "dye_2star" ],
-    "specialization_bonus": [ "tailoring" ],
+    "recipes": ["fabric_2star", "barrels_2star", "dye_2star"],
+    "specialization_bonus": ["tailoring"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "pantry": {
@@ -506,11 +506,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "porridge_2star", "pie_2star", "pack_of_luxury_goods_2star" ],
-    "specialization_bonus": [ "farming" ],
+    "recipes": ["porridge_2star", "pie_2star", "pack_of_luxury_goods_2star"],
+    "specialization_bonus": ["farming"],
     "rain_engine": "drizzle",
     "exclusivity": "frogs",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "press": {
@@ -520,11 +520,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "oil_3star", "flour_1star", "paste_1star" ],
-    "specialization_bonus": [ "engineering" ],
+    "recipes": ["oil_3star", "flour_1star", "paste_1star"],
+    "specialization_bonus": ["engineering"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "provisioner": {
@@ -534,11 +534,11 @@
       "planks": 8,
       "fabric": 4
     },
-    "recipes": [ "flour_2star", "barrels_2star", "pack_of_provisions_2star" ],
-    "specialization_bonus": [ "engineering" ],
+    "recipes": ["flour_2star", "barrels_2star", "pack_of_provisions_2star"],
+    "specialization_bonus": ["engineering"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "rain_mill": {
@@ -548,11 +548,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "flour_3star", "scrolls_1star", "paste_1star" ],
-    "specialization_bonus": [ "engineering", "farming" ],
+    "recipes": ["flour_3star", "scrolls_1star", "paste_1star"],
+    "specialization_bonus": ["engineering", "farming"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "rainpunk_foundry": {
@@ -563,11 +563,11 @@
       "bricks": 2,
       "fabric": 2
     },
-    "recipes": [ "parts_3star", "wildfire_essence_3star" ],
-    "specialization_bonus": [ "metallurgy", "engineering", "rainwater" ],
+    "recipes": ["parts_3star", "wildfire_essence_3star"],
+    "specialization_bonus": ["metallurgy", "engineering", "rainwater"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "ranch": {
@@ -576,11 +576,11 @@
     "construction_cost": {
       "planks": 5
     },
-    "recipes": [ "meat_1star", "leather_1star", "eggs_1star" ],
-    "specialization_bonus": [ "meat" ],
+    "recipes": ["meat_1star", "leather_1star", "eggs_1star"],
+    "specialization_bonus": ["meat"],
     "rain_engine": "drizzle",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "scribe": {
@@ -590,11 +590,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "scrolls_3star", "pack_of_trade_goods_2star", "ale_1star" ],
-    "specialization_bonus": [ "brewing" ],
+    "recipes": ["scrolls_3star", "pack_of_trade_goods_2star", "ale_1star"],
+    "specialization_bonus": ["brewing"],
     "rain_engine": "clearance",
     "exclusivity": "beavers",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "smelter": {
@@ -603,11 +603,11 @@
     "construction_cost": {
       "bricks": 4
     },
-    "recipes": [ "copper_bars_3star", "training_gear_2star", "pie_1star" ],
-    "specialization_bonus": [ "metallurgy", "warmth" ],
+    "recipes": ["copper_bars_3star", "training_gear_2star", "pie_1star"],
+    "specialization_bonus": ["metallurgy", "warmth"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "smithy": {
@@ -617,11 +617,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "tools_2star", "pipes_2star", "pack_of_trade_goods_2star" ],
-    "specialization_bonus": [ "engineering", "metallurgy", "warmth" ],
+    "recipes": ["tools_2star", "pipes_2star", "pack_of_trade_goods_2star"],
+    "specialization_bonus": ["engineering", "metallurgy", "warmth"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "smokehouse": {
@@ -631,11 +631,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "jerky_3star", "pottery_1star", "incense_1star" ],
-    "specialization_bonus": [ "warmth", "meat" ],
+    "recipes": ["jerky_3star", "pottery_1star", "incense_1star"],
+    "specialization_bonus": ["warmth", "meat"],
     "rain_engine": "drizzle",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "stamping_mill": {
@@ -645,11 +645,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "bricks_2star", "flour_2star", "copper_bars_2star" ],
-    "specialization_bonus": [ "metallurgy", "engineering", "masonry" ],
+    "recipes": ["bricks_2star", "flour_2star", "copper_bars_2star"],
+    "specialization_bonus": ["metallurgy", "engineering", "masonry"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "supplier": {
@@ -659,11 +659,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "flour_2star", "planks_2star", "waterskins_2star" ],
-    "specialization_bonus": [ "tailoring" ],
+    "recipes": ["flour_2star", "planks_2star", "waterskins_2star"],
+    "specialization_bonus": ["tailoring"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "tea_house": {
@@ -673,11 +673,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "tea_3star", "incense_2star", "waterskins_1star" ],
-    "specialization_bonus": [ "alchemy", "rainwater" ],
+    "recipes": ["tea_3star", "incense_2star", "waterskins_1star"],
+    "specialization_bonus": ["alchemy", "rainwater"],
     "rain_engine": "drizzle",
     "exclusivity": "foxes",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "tinctury": {
@@ -687,11 +687,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "dye_3star", "ale_2star", "wine_1star" ],
-    "specialization_bonus": [ "alchemy", "brewing" ],
+    "recipes": ["dye_3star", "ale_2star", "wine_1star"],
+    "specialization_bonus": ["alchemy", "brewing"],
     "rain_engine": "drizzle",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "tinkerer": {
@@ -701,11 +701,11 @@
       "planks": 5,
       "bricks": 2
     },
-    "recipes": [ "tools_2star", "training_gear_2star", "pottery_2star" ],
-    "specialization_bonus": [ "metallurgy", "engineering" ],
+    "recipes": ["tools_2star", "training_gear_2star", "pottery_2star"],
+    "specialization_bonus": ["metallurgy", "engineering"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "toolshop": {
@@ -715,11 +715,11 @@
       "planks": 5,
       "fabric": 2
     },
-    "recipes": [ "tools_3star", "pipes_2star", "boots_2star" ],
-    "specialization_bonus": [ "engineering" ],
+    "recipes": ["tools_3star", "pipes_2star", "boots_2star"],
+    "specialization_bonus": ["engineering"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "weaver": {
@@ -728,11 +728,11 @@
     "construction_cost": {
       "planks": 8
     },
-    "recipes": [ "fabric_3star", "boots_1star", "training_gear_1star" ],
-    "specialization_bonus": [ "tailoring" ],
+    "recipes": ["fabric_3star", "boots_1star", "training_gear_1star"],
+    "specialization_bonus": ["tailoring"],
     "rain_engine": "clearance",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "workshop": {
@@ -743,11 +743,11 @@
       "bricks": 4,
       "fabric": 4
     },
-    "recipes": [ "planks_2star", "fabric_2star", "bricks_2star", "pipes_0star" ],
-    "specialization_bonus": [ "" ],
+    "recipes": ["planks_2star", "fabric_2star", "bricks_2star", "pipes_0star"],
+    "specialization_bonus": [""],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "clay_pit": {
@@ -757,11 +757,11 @@
       "planks": 2,
       "fabric": 2
     },
-    "recipes": [ "clay_2star", "reed_2star", "resin_2star" ],
-    "specialization_bonus": [ "masonry" ],
+    "recipes": ["clay_2star", "reed_2star", "resin_2star"],
+    "specialization_bonus": ["masonry"],
     "rain_engine": "storm",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "foresters_hut": {
@@ -770,11 +770,11 @@
     "construction_cost": {
       "planks": 2
     },
-    "recipes": [ "resin_2star", "crystalized_dew_2star" ],
-    "specialization_bonus": [ "woodworking" ],
+    "recipes": ["resin_2star", "crystalized_dew_2star"],
+    "specialization_bonus": ["woodworking"],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 4
   },
   "greenhouse": {
@@ -784,11 +784,11 @@
       "bricks": 2,
       "fabric": 2
     },
-    "recipes": [ "mushrooms_2star", "herbs_2star" ],
-    "specialization_bonus": [ "farming" ],
+    "recipes": ["mushrooms_2star", "herbs_2star"],
+    "specialization_bonus": ["farming"],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "hallowed_herb_garden": {
@@ -797,11 +797,11 @@
     "construction_cost": {
       "planks": 2
     },
-    "recipes": [ "roots_3star", "herbs_3star" ],
-    "specialization_bonus": [ "farming" ],
+    "recipes": ["roots_3star", "herbs_3star"],
+    "specialization_bonus": ["farming"],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "hallowed_small_farm": {
@@ -810,11 +810,11 @@
     "construction_cost": {
       "planks": 2
     },
-    "recipes": [ "vegetables_3star", "grain_3star" ],
-    "specialization_bonus": [ "farming" ],
+    "recipes": ["vegetables_3star", "grain_3star"],
+    "specialization_bonus": ["farming"],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "herb_garden": {
@@ -823,11 +823,11 @@
     "construction_cost": {
       "planks": 2
     },
-    "recipes": [ "roots_1star", "herbs_2star" ],
-    "specialization_bonus": [ "farming" ],
+    "recipes": ["roots_1star", "herbs_2star"],
+    "specialization_bonus": ["farming"],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "homestead": {
@@ -838,11 +838,11 @@
       "bricks": 2,
       "fabric": 2
     },
-    "recipes": [ "grain_3star", "plant_fiber_3star", "vegetables_3star", "mushrooms_3star" ],
-    "specialization_bonus": [ "farming" ],
+    "recipes": ["grain_3star", "plant_fiber_3star", "vegetables_3star", "mushrooms_3star"],
+    "specialization_bonus": ["farming"],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 4
   },
   "plantation": {
@@ -851,11 +851,11 @@
     "construction_cost": {
       "planks": 2
     },
-    "recipes": [ "berries_2star", "plant_fiber_2star" ],
-    "specialization_bonus": [ "farming" ],
+    "recipes": ["berries_2star", "plant_fiber_2star"],
+    "specialization_bonus": ["farming"],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "small_farm": {
@@ -864,11 +864,11 @@
     "construction_cost": {
       "planks": 2
     },
-    "recipes": [ "vegetables_1star", "grain_2star" ],
-    "specialization_bonus": [ "farming" ],
+    "recipes": ["vegetables_1star", "grain_2star"],
+    "specialization_bonus": ["farming"],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "fishing_hut": {
@@ -878,11 +878,11 @@
       "wood": 10,
       "parts": 3
     },
-    "recipes": [ "fish", "scales", "algae" ],
-    "specialization_bonus": [ "" ],
+    "recipes": ["fish", "scales", "algae"],
+    "specialization_bonus": [""],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 3
   },
   "foragers_camp": {
@@ -892,11 +892,11 @@
       "wood": 10,
       "parts": 3
     },
-    "recipes": [ "grain", "roots", "vegetables" ],
-    "specialization_bonus": [ "farming" ],
+    "recipes": ["grain", "roots", "vegetables"],
+    "specialization_bonus": ["farming"],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "harvesters_camp": {
@@ -906,11 +906,11 @@
       "wood": 10,
       "parts": 3
     },
-    "recipes": [ "plant_fiber", "reed", "leather" ],
-    "specialization_bonus": [ "" ],
+    "recipes": ["plant_fiber", "reed", "leather"],
+    "specialization_bonus": [""],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "herbalists_camp": {
@@ -920,11 +920,11 @@
       "wood": 10,
       "parts": 3
     },
-    "recipes": [ "herbs", "berries", "mushrooms" ],
-    "specialization_bonus": [ "alchemy" ],
+    "recipes": ["herbs", "berries", "mushrooms"],
+    "specialization_bonus": ["alchemy"],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "trappers_camp": {
@@ -934,11 +934,11 @@
       "wood": 10,
       "parts": 3
     },
-    "recipes": [ "meat", "insects", "eggs" ],
-    "specialization_bonus": [ "meat" ],
+    "recipes": ["meat", "insects", "eggs"],
+    "specialization_bonus": ["meat"],
     "rain_engine": "",
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "workers": 2
   },
   "bat_house": {
@@ -948,9 +948,9 @@
       "planks": 2,
       "pipes": 2
     },
-    "recipes": [ "" ],
+    "recipes": [""],
     "exclusivity": "bats",
-    "service_type": [ "" ],
+    "service_type": [""],
     "rain_engine": ""
   },
   "beaver_house": {
@@ -959,9 +959,9 @@
     "construction_cost": {
       "planks": 8
     },
-    "recipes": [ "" ],
+    "recipes": [""],
     "exclusivity": "beavers",
-    "service_type": [ "" ],
+    "service_type": [""],
     "rain_engine": ""
   },
   "fox_house": {
@@ -971,9 +971,9 @@
       "planks": 4,
       "crystalized_dew": 2
     },
-    "recipes": [ "" ],
+    "recipes": [""],
     "exclusivity": "foxes",
-    "service_type": [ "" ],
+    "service_type": [""],
     "rain_engine": ""
   },
   "frog_house": {
@@ -982,9 +982,9 @@
     "construction_cost": {
       "bricks": 4
     },
-    "recipes": [ "" ],
+    "recipes": [""],
     "exclusivity": "frogs",
-    "service_type": [ "" ],
+    "service_type": [""],
     "rain_engine": ""
   },
   "harpy_house": {
@@ -993,9 +993,9 @@
     "construction_cost": {
       "fabric": 4
     },
-    "recipes": [ "" ],
+    "recipes": [""],
     "exclusivity": "harpies",
-    "service_type": [ "" ],
+    "service_type": [""],
     "rain_engine": ""
   },
   "human_house": {
@@ -1005,9 +1005,9 @@
       "planks": 4,
       "bricks": 2
     },
-    "recipes": [ "" ],
+    "recipes": [""],
     "exclusivity": "humans",
-    "service_type": [ "" ],
+    "service_type": [""],
     "rain_engine": ""
   },
   "lizard_house": {
@@ -1017,8 +1017,8 @@
       "fabric": 2,
       "bricks": 2
     },
-    "recipes": [ "" ],
-    "service_type": [ "" ],
+    "recipes": [""],
+    "service_type": [""],
     "exclusivity": "lizards",
     "rain_engine": ""
   },
@@ -1030,8 +1030,8 @@
       "bricks": 4,
       "fabric": 8
     },
-    "recipes": [ "" ],
-    "service_type": [ "brawling", "education" ],
+    "recipes": [""],
+    "service_type": ["brawling", "education"],
     "exclusivity": "bats",
     "rain_engine": "",
     "workers": 3
@@ -1044,9 +1044,9 @@
       "bricks": 8,
       "fabric": 8
     },
-    "recipes": [ "" ],
-    "service_type": [ "treatment" ],
-    "specialization_bonus": [ "rainwater" ],
+    "recipes": [""],
+    "service_type": ["treatment"],
+    "specialization_bonus": ["rainwater"],
     "exclusivity": "harpies",
     "rain_engine": "",
     "workers": 3
@@ -1059,9 +1059,9 @@
       "bricks": 8,
       "fabric": 4
     },
-    "recipes": [ "" ],
-    "service_type": [ "brawling" ],
-    "specialization_bonus": [ "warmth" ],
+    "recipes": [""],
+    "service_type": ["brawling"],
+    "specialization_bonus": ["warmth"],
     "exclusivity": "lizards",
     "rain_engine": "",
     "workers": 3
@@ -1074,8 +1074,8 @@
       "bricks": 8,
       "fabric": 8
     },
-    "recipes": [ "" ],
-    "service_type": [ "treatment", "brawling" ],
+    "recipes": [""],
+    "service_type": ["treatment", "brawling"],
     "exclusivity": "",
     "rain_engine": "",
     "workers": 3
@@ -1087,8 +1087,8 @@
       "bricks": 16,
       "fabric": 4
     },
-    "recipes": [ "" ],
-    "service_type": [ "brawling", "luxury" ],
+    "recipes": [""],
+    "service_type": ["brawling", "luxury"],
     "exclusivity": "",
     "rain_engine": "",
     "workers": 3
@@ -1100,8 +1100,8 @@
       "planks": 40,
       "fabric": 4
     },
-    "recipes": [ "" ],
-    "service_type": [ "luxury", "education" ],
+    "recipes": [""],
+    "service_type": ["luxury", "education"],
     "exclusivity": "beavers",
     "rain_engine": "",
     "workers": 3
@@ -1113,8 +1113,8 @@
       "planks": 40,
       "fabric": 4
     },
-    "recipes": [ "" ],
-    "service_type": [ "luxury", "education" ],
+    "recipes": [""],
+    "service_type": ["luxury", "education"],
     "exclusivity": "",
     "rain_engine": "",
     "workers": 3
@@ -1126,8 +1126,8 @@
       "planks": 20,
       "fabric": 12
     },
-    "recipes": [ "" ],
-    "service_type": [ "leisure", "treatment" ],
+    "recipes": [""],
+    "service_type": ["leisure", "treatment"],
     "exclusivity": "",
     "rain_engine": "",
     "workers": 2
@@ -1140,9 +1140,9 @@
       "bricks": 8,
       "fabric": 8
     },
-    "recipes": [ "" ],
-    "service_type": [ "religion", "education" ],
-    "specialization_bonus": [ "warmth" ],
+    "recipes": [""],
+    "service_type": ["religion", "education"],
+    "specialization_bonus": ["warmth"],
     "exclusivity": "",
     "rain_engine": "",
     "workers": 3
@@ -1154,8 +1154,8 @@
       "planks": 20,
       "fabric": 12
     },
-    "recipes": [ "" ],
-    "service_type": [ "leisure", "treatment" ],
+    "recipes": [""],
+    "service_type": ["leisure", "treatment"],
     "exclusivity": "",
     "rain_engine": "",
     "workers": 2
@@ -1166,9 +1166,9 @@
     "construction_cost": {
       "bricks": 20
     },
-    "recipes": [ "" ],
-    "service_type": [ "religion", "leisure" ],
-    "specialization_bonus": [ "warmth", "brewing" ],
+    "recipes": [""],
+    "service_type": ["religion", "leisure"],
+    "specialization_bonus": ["warmth", "brewing"],
     "exclusivity": "humans",
     "rain_engine": "",
     "workers": 3
@@ -1181,9 +1181,9 @@
       "bricks": 4,
       "fabric": 8
     },
-    "recipes": [ "" ],
-    "service_type": [ "leisure", "luxury" ],
-    "specialization_bonus": [ "brewing" ],
+    "recipes": [""],
+    "service_type": ["leisure", "luxury"],
+    "specialization_bonus": ["brewing"],
     "exclusivity": "",
     "rain_engine": "",
     "workers": 3
@@ -1196,9 +1196,9 @@
       "bricks": 8,
       "fabric": 8
     },
-    "recipes": [ "" ],
-    "service_type": [ "treatment", "religion" ],
-    "specialization_bonus": [ "" ],
+    "recipes": [""],
+    "service_type": ["treatment", "religion"],
+    "specialization_bonus": [""],
     "exclusivity": "foxes",
     "rain_engine": "",
     "workers": 3
@@ -1211,9 +1211,9 @@
       "bricks": 8,
       "fabric": 8
     },
-    "recipes": [ "" ],
-    "service_type": [ "religion", "education" ],
-    "specialization_bonus": [ "warmth" ],
+    "recipes": [""],
+    "service_type": ["religion", "education"],
+    "specialization_bonus": ["warmth"],
     "exclusivity": "",
     "rain_engine": "",
     "workers": 3
@@ -1225,10 +1225,10 @@
       "parts": 3,
       "planks": 5
     },
-    "recipes": [ "" ],
-    "specialization_bonus": [ "rainwater" ],
+    "recipes": [""],
+    "specialization_bonus": ["rainwater"],
     "exclusivity": "",
-    "service_type": [ "" ],
+    "service_type": [""],
     "rain_engine": "",
     "workers": 3
   }

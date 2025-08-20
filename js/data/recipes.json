@@ -1,13 +1,13 @@
-﻿{
+{
   "ale_1star": {
     "ingredients": [
       {
-        "options": [ "grain", "roots" ],
+        "options": ["grain", "roots"],
         "amount": 6
       },
       {
-        "options": [ "pottery", "barrels", "waterskins" ],
-        "amount": [ 3, 2, 3 ]
+        "options": ["pottery", "barrels", "waterskins"],
+        "amount": [3, 2, 3]
       }
     ],
     "output": {
@@ -15,17 +15,17 @@
       "amount": 10
     },
     "production_time": 126,
-    "buildings": [ "scribe" ]
+    "buildings": ["scribe"]
   },
   "ale_2star": {
     "ingredients": [
       {
-        "options": [ "grain", "roots" ],
+        "options": ["grain", "roots"],
         "amount": 5
       },
       {
-        "options": [ "pottery", "barrels", "waterskins" ],
-        "amount": [ 3, 2, 3 ]
+        "options": ["pottery", "barrels", "waterskins"],
+        "amount": [3, 2, 3]
       }
     ],
     "output": {
@@ -33,17 +33,17 @@
       "amount": 10
     },
     "production_time": 126,
-    "buildings": [ "distillery", "tinctury" ]
+    "buildings": ["distillery", "tinctury"]
   },
   "ale_3star": {
     "ingredients": [
       {
-        "options": [ "grain", "roots" ],
+        "options": ["grain", "roots"],
         "amount": 4
       },
       {
-        "options": [ "pottery", "barrels", "waterskins" ],
-        "amount": [ 2, 1, 2 ]
+        "options": ["pottery", "barrels", "waterskins"],
+        "amount": [2, 1, 2]
       }
     ],
     "output": {
@@ -51,17 +51,17 @@
       "amount": 10
     },
     "production_time": 105,
-    "buildings": [ "brewery", "flawless_brewery" ]
+    "buildings": ["brewery", "flawless_brewery"]
   },
   "amber_3star": {
     "ingredients": [
       {
-        "options": [ "resin" ],
+        "options": ["resin"],
         "amount": 3
       },
       {
-        "options": [ "clearance_water", "oil" ],
-        "amount": [ 10, 1 ]
+        "options": ["clearance_water", "oil"],
+        "amount": [10, 1]
       }
     ],
     "output": {
@@ -69,7 +69,7 @@
       "amount": 1
     },
     "production_time": 42,
-    "buildings": [ "finesmith" ]
+    "buildings": ["finesmith"]
   },
   "barrels_2star": {
     "ingredients": [
@@ -704,7 +704,8 @@
     },
     "production_time": 42,
     "buildings": [
-      "brickyard", "beanery"
+      "brickyard",
+      "beanery"
     ]
   },
   "crystalized_dew_2star": {
