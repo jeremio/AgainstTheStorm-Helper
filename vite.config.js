@@ -8,5 +8,9 @@ const GITHUB_REPO_NAME = 'AgainstTheStorm-Helper'
 export default defineConfig({
   // La base doit être le nom de votre dépôt pour que GitHub Pages fonctionne
   base: process.env.NODE_ENV === 'production' ? `/${GITHUB_REPO_NAME}/` : '/',
-  plugins: [vue()],
+  plugins: [vue({
+      features: {
+          vapor: true,
+      }
+  })],
 })

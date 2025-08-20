@@ -93,7 +93,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup vapor>
 import { computed, reactive, ref, watch } from 'vue'
 
 const props = defineProps({
