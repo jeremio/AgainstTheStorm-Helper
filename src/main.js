@@ -3,5 +3,5 @@ import App from './App.vue'
 import './style.css'
 
 createApp(App)
-    .use(vaporInteropPlugin)
-    .mount('#app')
+  .use(vaporInteropPlugin)
+  .mount('#app')

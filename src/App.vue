@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script setup vapor>
+<script setup>
 import { computed, onMounted, ref } from 'vue'
 import RecommendationsDisplay from './components/RecommendationsDisplay.vue'
 import SettlementConfiguration from './components/SettlementConfiguration.vue'
