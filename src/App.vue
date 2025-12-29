@@ -30,12 +30,12 @@
   </div>
 </template>
 
-<script setup vapor>
+<script setup vapor lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import RecommendationsDisplay from './components/RecommendationsDisplay.vue'
 import SettlementConfiguration from './components/SettlementConfiguration.vue'
-import { useBlueprintAnalyzer } from './composables/useBlueprintAnalyzer.js'
-import { useGameData } from './composables/useGameData.js'
+import { useBlueprintAnalyzer } from './composables/useBlueprintAnalyzer.ts'
+import { useGameData } from './composables/useGameData.ts'
 
 const { gameData, dataLoadStatus, error: dataLoadError, loadGameData } = useGameData()
 const { calculateOptimalBlueprint } = useBlueprintAnalyzer(gameData)

@@ -35,23 +35,14 @@
   </div>
 </template>
 
-<script setup vapor>
+<script setup vapor lang="ts">
 import { computed } from 'vue'
 
-const props = defineProps({
-  results: {
-    type: Array,
-    default: null,
-  },
-  error: {
-    type: String,
-    default: null,
-  },
-  gameData: {
-    type: Object,
-    required: true,
-  },
-})
+const props = defineProps<{
+  results?: Array<any>
+  error?: string
+  gameData: Record<string, any>
+}>()
 
 const maxScore = computed(() => {
   if (!props.results || props.results.length === 0)
@@ -77,9 +68,11 @@ function getScoreClass(score, max) {
   padding-left: 20px; /* Indent list */
   list-style-type: none; /* Remove default bullets */
 }
+
 .reasoning :deep(li) {
   margin-bottom: 4px; /* Space between items */
 }
+
 .reasoning :deep(li::before) {
   content: '🔹'; /* Custom bullet */
   margin-right: 8px;

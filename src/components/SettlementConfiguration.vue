@@ -93,19 +93,13 @@
   </div>
 </template>
 
-<script setup vapor>
+<script setup vapor lang="ts">
 import { computed, reactive, ref, watch } from 'vue'
 
-const props = defineProps({
-  gameData: {
-    type: Object,
-    required: true,
-  },
-  dataLoaded: {
-    type: Boolean,
-    required: true,
-  },
-})
+const props = defineProps<{
+  gameData: Record<string, any>
+  dataLoaded: boolean
+}>()
 
 defineEmits(['calculate'])
 
