@@ -77,10 +77,10 @@ function getScoreClass(score, max) {
   padding-left: 20px; /* Indent list */
   list-style-type: none; /* Remove default bullets */
 }
-.reasoning >>> li {
+.reasoning :deep(li) {
   margin-bottom: 4px; /* Space between items */
 }
-.reasoning >>> li::before {
+.reasoning :deep(li::before) {
   content: '🔹'; /* Custom bullet */
   margin-right: 8px;
   color: #ffd700;
