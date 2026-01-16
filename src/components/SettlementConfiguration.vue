@@ -1,24 +1,26 @@
 <template>
-  <div class="section">
+  <div class="section" v-if="dataLoaded && gameData">
     <h2 class="section-title">
       ️Settlement Configuration
     </h2>
 
     <!-- Biome Selection -->
-    <div class="input-group">
+    <div class="input-group" v-if="gameData.biomes">
       <label for="biome-select">Biome:</label>
       <select id="biome-select" v-model="config.biome">
-        <option disabled value="">
-          Select a biome...
-        </option>
-        <option v-for="(biome, key) in gameData.biomes" :key="key" :value="key">
-          {{ biome.name }}
+        <option
+          v-for="opt in biomeOptions"
+          :key="opt.value"
+          :value="opt.value"
+          :disabled="opt.disabled"
+        >
+          {{ opt.text }}
         </option>
       </select>
     </div>
 
     <!-- Species Selection -->
-    <div class="input-group">
+    <div class="input-group" v-if="gameData.species">
       <label>Species (select exactly 3):</label>
       <div class="species-selection">
         <div
@@ -180,5 +182,25 @@ function availableBlueprintOptionsFor(index) {
 
 const isReadyToCalculate = computed(() => {
   return props.dataLoaded && config.biome && config.selectedSpecies.length === 3
+})
+
+const biomeOptions = computed(() => {
+  // 1. Option par défaut
+  const options = [
+    { value: '', text: 'Select a biome...', disabled: true }
+  ]
+
+  // 2. Ajout des biomes dynamiques (si disponibles)
+  if (props.gameData && props.gameData.biomes) {
+    Object.entries(props.gameData.biomes).forEach(([key, val]: any) => {
+      options.push({
+        value: key,
+        text: val.name,
+        disabled: false
+      })
+    })
+  }
+
+  return options
 })
 </script>
