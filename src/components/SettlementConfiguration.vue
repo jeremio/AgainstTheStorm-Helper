@@ -1,11 +1,11 @@
 <template>
-  <div class="section" v-if="dataLoaded && gameData">
+  <div v-if="dataLoaded && gameData" class="section">
     <h2 class="section-title">
       ️Settlement Configuration
     </h2>
 
     <!-- Biome Selection -->
-    <div class="input-group" v-if="gameData.biomes">
+    <div v-if="gameData.biomes" class="input-group">
       <label for="biome-select">Biome:</label>
       <select id="biome-select" v-model="config.biome">
         <option
@@ -20,7 +20,7 @@
     </div>
 
     <!-- Species Selection -->
-    <div class="input-group" v-if="gameData.species">
+    <div v-if="gameData.species" class="input-group">
       <label>Species (select exactly 3):</label>
       <div class="species-selection">
         <div
@@ -97,6 +97,7 @@
 
 <script setup vapor lang="ts">
 import { computed, reactive, ref, watch } from 'vue'
+import { SPECIAL_BUILDING_RE } from '../composables/useBlueprintAnalyzer.ts'
 
 const props = defineProps<{
   gameData: Record<string, any>
@@ -175,7 +176,7 @@ function availableBlueprintOptionsFor(index) {
     Object.entries(props.gameData.buildings || {})
       .filter(([key, building]) =>
         !excluded.has(key)
-        && !building.name.match(/Holy|Hallowed|Flawless/),
+        && !building.name.match(SPECIAL_BUILDING_RE),
       ),
   )
 }
@@ -187,7 +188,7 @@ const isReadyToCalculate = computed(() => {
 const biomeOptions = computed(() => {
   // 1. Option par défaut
   const options = [
-    { value: '', text: 'Select a biome...', disabled: true }
+    { value: '', text: 'Select a biome...', disabled: true },
   ]
 
   // 2. Ajout des biomes dynamiques (si disponibles)
@@ -196,7 +197,7 @@ const biomeOptions = computed(() => {
       options.push({
         value: key,
         text: val.name,
-        disabled: false
+        disabled: false,
       })
     })
   }

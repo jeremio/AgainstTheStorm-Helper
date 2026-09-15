@@ -1,3 +1,9 @@
+// Hissees au niveau module : sans cela elles sont recompilees a chaque appel
+// (regle e18e/prefer-static-regex). Aucune n'a le drapeau g, donc pas d'etat partage.
+const STAR_SUFFIX_RE = /(\d)star$/
+const KEY_WITH_STAR_RE = /^(.+?)_(\d)star$/
+export const SPECIAL_BUILDING_RE = /Holy|Hallowed|Flawless/
+
 export function useBlueprintAnalyzer(gameData) {
   const getInheritBonus = (buildingName) => {
     const bonuses = {
@@ -221,7 +227,7 @@ export function useBlueprintAnalyzer(gameData) {
         b.recipes.forEach((rKey) => {
           const recipe = gameData.value.recipes[rKey]
           if (recipe?.output?.item === outputItem) {
-            const starMatch = rKey.match(/(\d)star$/)
+            const starMatch = rKey.match(STAR_SUFFIX_RE)
             const stars = starMatch ? Number.parseInt(starMatch[1], 10) : 1
             maxStar = Math.max(maxStar, stars)
           }
@@ -231,7 +237,7 @@ export function useBlueprintAnalyzer(gameData) {
       const buildingStar = building.recipes.reduce((star, rKey) => {
         const recipe = gameData.value.recipes[rKey]
         if (recipe?.output?.item === outputItem) {
-          const starMatch = rKey.match(/(\d)star$/)
+          const starMatch = rKey.match(STAR_SUFFIX_RE)
           return Math.max(star, starMatch ? Number.parseInt(starMatch[1], 10) : 1)
         }
         return star
@@ -271,7 +277,7 @@ export function useBlueprintAnalyzer(gameData) {
   const analyzeFertileSoilUsefulness = (building, currentBuildings) => {
     let score = 0
     building.recipes.forEach((rKey) => {
-      const match = rKey.match(/^(.+?)_(\d)star$/)
+      const match = rKey.match(KEY_WITH_STAR_RE)
       if (!match)
         return
 
@@ -472,7 +478,7 @@ export function useBlueprintAnalyzer(gameData) {
     if (blueprintOptions.length === 0) {
       const excluded = [...config.currentBuildings]
       blueprintOptions = Object.keys(gameData.value.buildings)
-        .filter(key => !excluded.includes(key) && !gameData.value.buildings[key].name.match(/Holy|Hallowed|Flawless/))
+        .filter(key => !excluded.includes(key) && !gameData.value.buildings[key].name.match(SPECIAL_BUILDING_RE))
     }
 
     if (!config.biome || config.selectedSpecies.length !== 3)
