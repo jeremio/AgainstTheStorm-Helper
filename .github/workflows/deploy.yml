@@ -23,7 +23,7 @@ jobs:
 
       # 2. Installe pnpm (lit automatiquement la version depuis package.json)
       - name: Setup pnpm 📦
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       # 3. Installe Node.js (utilise la version du fichier .nvmrc)
       - name: Setup Node.js 🟩
